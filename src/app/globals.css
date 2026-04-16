@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =====================================================
+   Přežij Monetu — Globální styly
+   Dark cyberpunk, glitch efekty, monospace kultura
+   ===================================================== */
+
+:root {
+  --bg-base: #05050f;
+  --bg-panel: #0a0a14;
+  --border-dim: #1a1a2e;
+  --text-dim: #4a4a6a;
+  --threat: #ff2d2d;
+  --success: #00ff41;
+  --cyber-cyan: #22d3ee;
+}
+
+html {
+  background-color: var(--bg-base);
+}
+
+body {
+  background-color: var(--bg-base);
+  color: #d1d5db;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* =====================================================
+   GLITCH EFEKTY
+   ===================================================== */
+
+.glitch-text {
+  position: relative;
+}
+
+@keyframes glitch-low {
+  0%, 90%, 100% { clip-path: none; transform: none; }
+  92%  { clip-path: inset(40% 0 55% 0); transform: translate(-1px, 0); }
+  94%  { clip-path: inset(10% 0 80% 0); transform: translate(1px, 0); }
+  96%  { clip-path: none; transform: none; }
+}
+
+.glitch-low::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: #ff2d2d;
+  animation: glitch-low 4s infinite;
+  opacity: 0;
+  pointer-events: none;
+}
+.glitch-low:hover::before {
+  opacity: 0.6;
+}
+
+@keyframes glitch-medium {
+  0%, 85%, 100% { clip-path: none; transform: none; opacity: 0; }
+  87%  { clip-path: inset(30% 0 60% 0); transform: translate(-2px, 0); opacity: 0.7; }
+  89%  { clip-path: inset(70% 0 10% 0); transform: translate(2px, 0); opacity: 0.7; }
+  91%  { clip-path: inset(45% 0 40% 0); transform: translate(-1px, 1px); opacity: 0.5; }
+}
+
+.glitch-medium::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: #ff2d2d;
+  animation: glitch-medium 2.5s infinite;
+  pointer-events: none;
+}
+
+.glitch-medium::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: #22d3ee;
+  animation: glitch-medium 2.5s infinite 0.1s;
+  pointer-events: none;
+}
+
+@keyframes glitch-high {
+  0%  { clip-path: inset(40% 0 61% 0); transform: translate(-3px, 0); opacity: 0.8; }
+  10% { clip-path: inset(92% 0 1%  0); transform: translate(3px, 0);  opacity: 0.8; }
+  20% { clip-path: inset(43% 0 50% 0); transform: translate(-2px, 1px); opacity: 0.6; }
+  30% { clip-path: inset(75% 0 18% 0); transform: translate(2px, -1px); opacity: 0.8; }
+  40% { clip-path: inset(20% 0 70% 0); transform: translate(-1px, 0); opacity: 0.5; }
+  50%, 100% { clip-path: none; transform: none; opacity: 0; }
+}
+
+.glitch-high::before,
+.glitch-high::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.glitch-high::before {
+  color: #ff2d2d;
+  animation: glitch-high 0.4s infinite;
+}
+.glitch-high::after {
+  color: #22d3ee;
+  animation: glitch-high 0.4s infinite 0.05s;
+}
+
+/* =====================================================
+   BOSS INTERRUPT OVERLAY
+   ===================================================== */
+
+.boss-interrupt-overlay {
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(2px);
+}
+
+.scanline-overlay {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 0, 0, 0.015) 2px,
+    rgba(255, 0, 0, 0.015) 4px
+  );
+}
+
+/* =====================================================
+   SCROLLBAR
+   ===================================================== */
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: #1a1a2e; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #2a2a4e; }
+
+::selection {
+  background: rgba(34, 211, 238, 0.2);
+  color: #22d3ee;
+}
+
+:focus-visible {
+  outline: 1px solid rgba(34, 211, 238, 0.5);
+  outline-offset: 2px;
+}
