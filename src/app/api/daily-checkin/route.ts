@@ -6,6 +6,8 @@ import { vypocitejCheckinDamage } from '@/lib/game/damage'
 import { levelZXP } from '@/lib/game/xp'
 import { HodnoceniDne } from '@/types/avatar'
 
+export const dynamic = 'force-dynamic'
+
 export async function POST(req: NextRequest) {
   const avatarId = req.headers.get('X-Avatar-Id')
   if (!avatarId) {

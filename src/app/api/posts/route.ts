@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getSupabaseServiceClient, getSupabaseServerClient } from '@/lib/supabase/server'
 import { MAX_DELKA_POSTU, MAX_POSTY_ZA_DEN } from '@/lib/constants'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(req: NextRequest) {
   const supabase = getSupabaseServerClient()
   const { searchParams } = new URL(req.url)

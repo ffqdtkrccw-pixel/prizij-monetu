@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getSupabaseServiceClient } from '@/lib/supabase/server'
 
+export const dynamic = 'force-dynamic'
+
 // PRIVACY: obnova identity podle backup klíče — nevyžaduje žádné osobní údaje
 export async function POST(req: NextRequest) {
   const body = await req.json()

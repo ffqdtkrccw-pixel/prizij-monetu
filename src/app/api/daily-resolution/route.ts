@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getSupabaseServiceClient } from '@/lib/supabase/server'
 
+export const dynamic = 'force-dynamic'
+
 // Tato route je volána Vercel Cronem (každý den 23:59 CET)
 // nebo manuálně s CRON_SECRET hlavičkou
 export async function POST(req: NextRequest) {
